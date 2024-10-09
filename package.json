@@ -1,0 +1,131 @@
+{
+  "name": "copycache",
+  "displayName": "CopyCache",
+  "description": "Maintain and manage clipboard history with smart categorization and search functionality",
+  "version": "1.0.0",
+  "publisher": "prshntdev",
+  "icon": "assets/ico.png",
+  "author": {
+    "name": "Prashant Bhardwaj",
+    "email": "bhrdwj@prshnt.dev"
+  },
+  "website": "https://prshnt.dev",
+  "repository": {
+    "url": "https://github.com/prshntdev/copycache"
+  },
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "copycache-sidebar",
+          "title": "CopyCache",
+          "icon": "$(clippy)"
+        }
+      ]
+    },
+    "views": {
+      "copycache-sidebar": [
+        {
+          "id": "copycacheView",
+          "name": "Clipboard History"
+        }
+      ]
+    },
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "copycache.pinSnippet",
+          "when": "view == copycacheView",
+          "group": "inline"
+        },
+        {
+          "command": "copycache.editSnippet",
+          "when": "view == copycacheView",
+          "group": "inline"
+        },
+        {
+          "command": "copycache.deleteSnippet",
+          "when": "view == copycacheView",
+          "group": "inline"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "copycache.clearAll",
+          "when": "view == copycacheView",
+          "group": "navigation"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "copycache.pinSnippet",
+        "title": "Pin Snippet",
+        "icon": "$(pin)"
+      },
+      {
+        "command": "copycache.editSnippet",
+        "title": "Edit Snippet",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "copycache.deleteSnippet",
+        "title": "Delete Snippet",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "copycache.clearAll",
+        "title": "Clear All Snippets",
+        "icon": "$(clear-all)"
+      }
+    ],
+    "css": [
+      {
+        "file": "./styles/copycache.css"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.94.0",
+    "@types/mocha": "^10.0.8",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "eslint": "^9.11.1",
+    "esbuild": "^0.24.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.6.2",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  },
+  "license": "MIT",
+  "keywords": ["clipboard", "history", "productivity"],
+  "bugs": {
+    "url": "https://github.com/prshntdev/copycache/issues"
+  },
+  "homepage": "https://github.com/prshntdev/copycache#readme"
+}

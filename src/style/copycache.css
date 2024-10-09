@@ -1,0 +1,19 @@
+.copycache-item {
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .copycache-item .icon {
+    margin-right: 8px;
+  }
+  
+  .copycache-item .label {
+    font-weight: 500;
+  }
+  
+  .copycache-item .description {
+    opacity: 0.7;
+    margin-left: 8px;
+    font-size: 0.9em;
+  }
