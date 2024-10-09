@@ -2,7 +2,7 @@
   "name": "copycache",
   "displayName": "CopyCache",
   "description": "Maintain and manage clipboard history with smart categorization and search functionality",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "prshntdev",
   "icon": "assets/ico.png",
   "author": {
